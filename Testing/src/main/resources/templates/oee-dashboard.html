@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OEEDashboard</title>
+</head>
+<body>
+    <h1>OEE</h1>
+    
+    <div>
+        <h2>Overall Equipment Effectiveness</h2>
+        <p>Availability: <span th:text="${oee.availability}"></span>%</p>
+        <p>Performance: <span th:text="${oee.performance}"></span>%</p>
+        <p>Quality: <span th:text="${oee.quality}"></span>%</p>
+        <p>OEE: <span th:text="${oee.oee}"></span>%</p>
+    </div>
+    
+    <div>
+        <h2>Production Summary</h2>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Shift</th>
+                <th>Production Quantity</th>
+                <th>Planned Quantity</th>
+                <th>Down time</th>
+            </tr>
+            <tr th:each="productionSummary : ${productionSummaries}">
+                <td th:text="${productionSummary.date}"></td>
+                <td th:text="${productionSummary.shift}"></td>
+                <td th:text="${productionSummary.quantity}"></td>
+                <td th:text="${productionSummary.plannedQuantity}"></td>
+                <td th:text="${productionSummary.downtime}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
